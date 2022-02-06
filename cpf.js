@@ -22,7 +22,7 @@ function cpfContribution(params) {
 
 // In the original ordinance passed on 11 Dec 1953, it was 5% from both workers and employers, for workers earning
 // <$500, to take effect from 1 May 1955.
-// Ref: The Central Provident Fund Ordinance, 1953. (No. 34 of 1953).
+// Ref: Central Provident Fund Ordinance, 1953. (Ordinance 34 of 1953).
 // Gazette Notification No. 2937 in Gazette No. 151 dated 14 Dec 1953 (page 1493).
 // Gazette Notification No. S 398 in Gazette Supplement No. 88 dated 14 Dec 1953 (page 1228).
 // Passed by Meeting of the Legislative Council on 24 Nov 1953, Governor's assent on 11 Dec 1953.
@@ -91,9 +91,13 @@ function cpfContribution195505(params) {
   };
 }
 
-// An amendment to the ordinance was passed in Jun 1955 to, among other things, to postpone the commencement from May
-// to Jul 1955, and to exempt workers earning <$200 from having to make the employee contribution.
-// Ref: The Central Provident Fund Ordinance Amendment No. 2 (No. 15 of 1955).
+// There was another amendment in between that I haven't examined yet.
+// Central Provident Fund (Amendment) Ordinance, 1955 (Ordinance 4 of 1955)
+
+// An amendment to the ordinance was passed on 29 Jun 1955 to, among other things, postpone the commencement from 1 May
+// to 1 Jul 1955 (thus amending the ordinance prior to commencement), and to exempt workers earning <$200 from having to
+// make the employee contribution.
+// Ref: Central Provident Fund (Amendment No. 2) Ordinance, 1955 (Ordinance 15 of 1955).
 // Gazette Notification No. ___ in Gazette No. __ dated 1 Jul 1955 (page 889).
 // Gazette Notification No. S 186 in Gazette Supplement No. 51 dated 1 Jul 1955 (page 1037).
 // Passed by Meeting of the Legislative Assembly on 29 Jun 1955, Governor's assent on 1 Jul 1955.
