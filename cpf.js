@@ -32,7 +32,7 @@ function cpfContribution195505(params) {
   // The contribution is defined in terms of the employee contribution, and then the employer contributes the same amount.
   // While it is often said to be 5%, the actual contribution rates as defined in the Schedule to the Ordinance
   // did not consistently match that, so it's not feasible to simply do a 5% and round calculation.
-  // Instead, build a table.
+  // Instead, build a table to match how it is defined in the Schedule.
   const ratesTable = [
     // When the wages do not exceed $10 -- nil
     { minExclusive: '0', maxInclusive: '10', contribution: '0.00' },
