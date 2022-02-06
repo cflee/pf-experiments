@@ -107,12 +107,10 @@ function cpfContribution195507(params) {
   let employee = new BigNumber(0);
   let employer = new BigNumber(0);
 
-  // This could also be implemented as a large lookup table, but because the employee contribution in the >$200 to 
-  // <=$210.50 range is defined as the entire amount above $200 down to the last cent (as it's not a 5% calculation)
-  // instead of per dollar, that means that the lookup table would need to include another 1,050 records, which is a
-  // bit annoying. It is certainly possible to instantiate the lookup table programmatically at runtime instead of
-  // hard-writing it here, but let's write something that hews a bit closer to the Schedule in the amended Ordinance
-  // instead, for easier human inspection.
+  // This could also be implemented as a large lookup table, but because the contributions are denominated in cents, it
+  // would be a rather large table to cover wages from $10.00 to $500.00. It is certainly possible to instantiate the
+  // lookup table programmatically at runtime instead of hard-writing it here, but let's write something that hews a
+  // bit closer to the Schedule in the amended Ordinance instead, for easier human inspection.
   // In the calculation of 5 per centum of any sum fractions of a cent shall be ignored
   if (wage.isGreaterThan('10') && wage.isLessThanOrEqualTo('200')) {
     // When the wages exceed $10 but not $200
