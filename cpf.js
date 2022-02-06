@@ -117,16 +117,16 @@ function cpfContribution195507(params) {
   if (wage.isGreaterThan('10') && wage.isLessThanOrEqualTo('200')) {
     // When the wages exceed $10 but not $200
     // no employee contribution
-    employer = roundDownToDollar(wage.times('0.05'));
+    employer = roundDownToCent(wage.times('0.05'));
   } else if (wage.isGreaterThan('200') && wage.isLessThanOrEqualTo('210.50')) {
     // When the wages exceed $200 but not $210.50
     // employee contribution of the difference between $200 and the wages
     employee = wage.minus('200.00');
-    employer = roundDownToDollar(wage.times('0.05'));
+    employer = roundDownToCent(wage.times('0.05'));
   } else if (wage.isGreaterThan('210.50') && wage.isLessThanOrEqualTo('500.00')) {
     // When the wages exceed $210.50 but not $500
-    employee = roundDownToDollar(wage.times('0.05'));
-    employer = roundDownToDollar(wage.times('0.05'));
+    employee = roundDownToCent(wage.times('0.05'));
+    employer = roundDownToCent(wage.times('0.05'));
   } else if (wage.isGreaterThan('500.00')) {
     employee = new BigNumber('25');
     employer = new BigNumber('25');
@@ -159,8 +159,13 @@ function roundDownToDollar(amount) {
   return amount.integerValue(BigNumber.ROUND_DOWN);
 }
 
+function roundDownToCent(amount) {
+  return amount.decimalPlaces(2, BigNumber.ROUND_DOWN);
+}
+
 exports.cpfContribution = cpfContribution;
 exports.cpfContribution195505 = cpfContribution195505;
 exports.roundOffToDollar = roundOffToDollar;
 exports.roundUpToDollar = roundUpToDollar;
 exports.roundDownToDollar = roundDownToDollar;
+exports.roundDownToCent = roundDownToCent;

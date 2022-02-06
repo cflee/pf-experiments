@@ -90,16 +90,19 @@ const cpfContribution195507TestTable = [
   ['0.00', '0.00', '0.00'],
   ['10.00', '0.00', '0.00'],
   // When the wages exceed $10 but not $200, no employee contribution
-  ['10.01', '0.00', '0.00'], // 0.5005 => 0.00
-  ['20.00', '0.00', '1.00'], // 1.0000 => 1.00
-  ['39.99', '0.00', '1.00'], // 1.9995 => 1.00
-  ['40.00', '0.00', '2.00'], // 2.0000 => 2.00
+  ['10.01', '0.00', '0.50'], // employer 0.5005 => 0.00
+  ['20.00', '0.00', '1.00'],
+  ['39.99', '0.00', '1.99'], // employer 1.9995 => 1.00
+  ['40.00', '0.00', '2.00'],
   ['200.00', '0.00', '10.00'],
-  // When the wages exceed $200 but not $210.50, employee contributes the difference over $200
-  ['200.01', '0.01', '10.00'],
-  ['210.50', '10.50', '10.00'],
-  // When the wages exceed $210.50 but not $500, both contribute 5%
-  ['210.51', '10.00', '10.00'], // this is mildly surprising
+  // When the wages exceed $200 but not $210.50, employee contribution ramps up to nearly meet employer contribution
+  ['200.01', '0.01', '10.00'], // employer 10.0005 => 10.00
+  ['210.50', '10.50', '10.52'], // employer 10.5250 => 10.52 (round down even if half cent)
+  // When the wages exceed $210.50 but not $500, both contribute the same 5%
+  ['210.51', '10.52', '10.52'], // 10.5255 => 10.52
+  ['210.60', '10.53', '10.53'],
+  ['499.99', '24.99', '24.99'], // 24.9995 => 24.99
+  ['500.00', '25.00', '25.00'],
   // When the wages exceed $500, both contribute $25
   ['500.01', '25.00', '25.00'],
   ['1000.00', '25.00', '25.00'],
@@ -145,4 +148,11 @@ test('roundDownToDollar', () => {
   // 50 cents should always round down, not to even
   expect(cpf.roundDownToDollar(new BigNumber('2.50'))).toEqual(new BigNumber('2.00'));
   expect(cpf.roundDownToDollar(new BigNumber('1.50'))).toEqual(new BigNumber('1.00'));
+});
+
+test('roundDownToCent', () => {
+  // 50.1 cents should round down
+  expect(cpf.roundDownToCent(new BigNumber('0.501'))).toEqual(new BigNumber('0.50'));
+  // 50.9 cents should round down
+  expect(cpf.roundDownToCent(new BigNumber('0.509'))).toEqual(new BigNumber('0.50'));
 });
